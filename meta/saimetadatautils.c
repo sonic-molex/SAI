@@ -24,6 +24,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include <sai.h>
 #include "saimetadatautils.h"
 #include "saimetadata.h"
@@ -404,6 +405,9 @@ static bool sai_metadata_is_condition_value_eq(
 
         case SAI_ATTR_VALUE_TYPE_UINT64:
             return cvalue->u64 == value->u64;
+
+        case SAI_ATTR_VALUE_TYPE_DOUBLE:
+            return fabs(cvalue->d64 - value->d64) < 1E-6;
 
         default:
 

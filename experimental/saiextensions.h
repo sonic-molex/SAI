@@ -50,6 +50,15 @@
 #include "saiexperimentaldashacl.h"
 #include "saiexperimentalbmtor.h"
 
+/* OTAI extension */
+#include "saiexperimentalotaiattenuator.h"
+#include "saiexperimentalotaioa.h"
+#include "saiexperimentalotaiocm.h"
+#include "saiexperimentalotaiosc.h"
+#include "saiexperimentalotaiotdr.h"
+#include "saiexperimentalotaiocscrossconnect.h"
+#include "saiexperimentalotaiocsport.h"
+
 /**
  * @brief Extensions to SAI APIs
  *
@@ -88,6 +97,20 @@ typedef enum _sai_api_extensions_t
     SAI_API_DASH_FLOW,
 
     SAI_API_DASH_APPLIANCE,
+
+    SAI_API_OTAI_ATTENUATOR,
+
+    SAI_API_OTAI_OA,
+
+    SAI_API_OTAI_OCM,
+
+    SAI_API_OTAI_OSC,
+
+    SAI_API_OTAI_OTDR,
+
+    SAI_API_OTAI_OCS_CROSS_CONNECT,
+
+    SAI_API_OTAI_OCS_PORT,
 
     /* Add new experimental APIs above this line */
 

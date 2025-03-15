@@ -132,6 +132,8 @@ typedef uint64_t sai_object_id_t;
 typedef void *sai_pointer_t;
 typedef uint64_t sai_api_version_t;
 
+typedef double sai_double_t;
+
 typedef struct _sai_timespec_t
 {
     uint64_t tv_sec;
@@ -1461,6 +1463,9 @@ typedef union _sai_attribute_value_t
 
     /** @validonly meta->attrvaluetype == SAI_ATTR_VALUE_TYPE_INT64 */
     sai_int64_t s64;
+
+    /** @validonly meta->attrvaluetype == SAI_ATTR_VALUE_TYPE_DOUBLE */
+    sai_double_t d64;
 
     /** @validonly meta->attrvaluetype == SAI_ATTR_VALUE_TYPE_POINTER */
     sai_pointer_t ptr;
