@@ -1,0 +1,255 @@
+/**
+ * Copyright (c) 2014 Microsoft Open Technologies, Inc.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License"); you may
+ *    not use this file except in compliance with the License. You may obtain
+ *    a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR
+ *    CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT
+ *    LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS
+ *    FOR A PARTICULAR PURPOSE, MERCHANTABILITY OR NON-INFRINGEMENT.
+ *
+ *    See the Apache Version 2.0 License for specific language governing
+ *    permissions and limitations under the License.
+ *
+ *    Microsoft would like to thank the following companies for their review and
+ *    assistance with these files: Intel Corporation, Mellanox Technologies Ltd,
+ *    Dell Products, L.P., Facebook, Inc., Marvell International Ltd.
+ *
+ * @file    saiexperimentalocscrossconnect.h
+ *
+ * @brief   This module defines the OCS cross connect
+ */
+
+#if !defined (__SAIEXPERIMENTALOCSCROSSCONNECT_H_)
+#define __SAIEXPERIMENTALOCSCROSSCONNECT_H_
+
+#include <saitypes.h>
+
+/**
+ * @defgroup SAIEXPERIMENTALOCSCONNECT SAI - OCS cross connect specific API definitions
+ *
+ * @{
+ */
+
+/** @brief OCS cross connection operation status */
+typedef enum _sai_ocs_cross_connect_oper_status_t
+{
+    SAI_OCS_CROSS_CONNECT_OPER_STATUS_DISABLED,
+    SAI_OCS_CROSS_CONNECT_OPER_STATUS_ENABLED,
+} sai_ocs_cross_connect_oper_status_t;
+
+/**
+ * @brief OCS cross connection attribute IDs
+ */
+typedef enum _sai_ocs_cross_connect_attr_t
+{
+    /**
+     * @brief Start of attributes
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_START,
+
+    /**
+     * @brief ID
+     *
+     * @type sai_uint32_t
+     * @flags MANDATORY_ON_CREATE | CREATE_ONLY
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_ID = SAI_OCS_CROSS_CONNECT_ATTR_START,
+
+    /**
+     * @brief Cross connect id
+     *
+     * @type char
+     * @flags CREATE_AND_SET
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_CROSS_CONNECT_ID,
+
+    /**
+     * @brief A side
+     *
+     * @type char
+     * @flags CREATE_AND_SET
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_A_SIDE,
+
+    /**
+     * @brief B side
+     *
+     * @type char
+     * @flags CREATE_AND_SET
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_B_SIDE,
+
+    /**
+     * @brief Physical path
+     *
+     * @type char
+     * @flags READ_ONLY
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_PHYSICAL_PATH,
+
+    /**
+     * @brief Cross connect operation status
+     *
+     * @type sai_ocs_cross_connect_oper_status_t
+     * @flags READ_ONLY
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_OPER_STATUS,
+
+    /**
+     * @brief End of attributes
+     */
+    SAI_OCS_CROSS_CONNECT_ATTR_END,
+
+    /** Custom range base value */
+    SAI_OCS_CROSS_CONNECT_ATTR_CUSTOM_RANGE_START = 0x10000000,
+
+    /** End of custom range base */
+    SAI_OCS_CROSS_CONNECT_ATTR_CUSTOM_RANGE_END
+
+} sai_ocs_cross_connect_attr_t;
+
+/**
+ * @brief OCS cross connection stat IDs
+ */
+typedef enum _sai_ocs_cross_connect_stat_t
+{
+    /**
+     * @brief Start of statistics
+     */
+    SAI_OCS_CROSS_CONNECT_STAT_START,
+
+    /**
+     * @brief A place holder
+     */
+    SAI_OCS_CROSS_CONNECT_STAT_NO_USE = SAI_OCS_CROSS_CONNECT_STAT_START,
+
+    /**
+     * @brief End of statistics
+     */
+    SAI_OCS_CROSS_CONNECT_STAT_END,
+
+} sai_ocs_cross_connect_stat_t;
+
+/**
+ * @brief Create OCS cross connect.
+ *
+ * Allocates and initializes a OCS cross connect.
+ *
+ * @param[out] ocs_cross_connect_id OCS cross connect id
+ * @param[in] switch_id Switch id on which the OCS exists
+ * @param[in] attr_count Number of attributes
+ * @param[in] attr_list Array of attributes
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_create_ocs_cross_connect_fn)(
+        _Out_ sai_object_id_t *ocs_cross_connect_id,
+        _In_ sai_object_id_t switch_id,
+        _In_ uint32_t attr_count,
+        _In_ const sai_attribute_t *attr_list);
+
+/**
+ * @brief Remove OCS cross connect
+ *
+ * @param[in] ocs_cross_connect_id OCS cross connect id
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_remove_ocs_cross_connect_fn)(
+        _In_ sai_object_id_t ocs_cross_connect_id);
+
+/**
+ * @brief Set OCS attribute
+ *
+ * @param[in] ocs_cross_connect_id OCS cross connect id
+ * @param[in] attr Attribute
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_set_ocs_cross_connect_attribute_fn)(
+        _In_ sai_object_id_t ocs_cross_connect_id,
+        _In_ const sai_attribute_t *attr);
+
+/**
+ * @brief Get OCS cross connect attribute
+ *
+ * @param[in] ocs_cross_connect_id OCS cross connect id
+ * @param[in] attr_count Number of attributes
+ * @param[inout] attr_list Array of attributes
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_get_ocs_cross_connect_attribute_fn)(
+        _In_ sai_object_id_t ocs_cross_connect_id,
+        _In_ uint32_t attr_count,
+        _Inout_ sai_attribute_t *attr_list);
+
+/**
+ * @brief Get OCS cross connect statistics.
+ *
+ * @param[in] ocs_cross_connect_id OCS cross connect id
+ * @param[in] number_of_counters Number of counters in the array
+ * @param[in] counter_ids Specifies the array of counter ids
+ * @param[out] counters Array of resulting counter values.
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_get_ocs_cross_connect_stats_fn)(
+        _In_ sai_object_id_t ocs_cross_connect_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids,
+        _Out_ uint64_t *counters);
+
+/**
+ * @brief Get OCS statistics extended.
+ *
+ * @param[in] ocs_cross_connect_id OCS cross connect id
+ * @param[in] number_of_counters Number of counters in the array
+ * @param[in] counter_ids Specifies the array of counter ids
+ * @param[in] mode Statistics mode
+ * @param[out] counters Array of resulting counter values.
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_get_ocs_cross_connect_stats_ext_fn)(
+        _In_ sai_object_id_t ocs_cross_connect_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids,
+        _In_ sai_stats_mode_t mode,
+        _Out_ uint64_t *counters);
+
+/**
+ * @brief Clear OCS cross connect statistics counters.
+ *
+ * @param[in] ocs_cross_connect_id OCS cross connect id
+ * @param[in] number_of_counters Number of counters in the array
+ * @param[in] counter_ids Specifies the array of counter ids
+ *
+ * @return #SAI_STATUS_SUCCESS on success, failure status code on error
+ */
+typedef sai_status_t (*sai_clear_ocs_cross_connect_stats_fn)(
+        _In_ sai_object_id_t ocs_cross_connect_id,
+        _In_ uint32_t number_of_counters,
+        _In_ const sai_stat_id_t *counter_ids);
+
+/**
+ * @brief Routing interface methods table retrieved with sai_api_query()
+ */
+typedef struct _sai_ocs_cross_connect_api_t
+{
+    sai_create_ocs_cross_connect_fn                create_ocs_cross_connect;
+    sai_remove_ocs_cross_connect_fn                remove_ocs_cross_connect;
+    sai_set_ocs_cross_connect_attribute_fn         set_ocs_cross_connect_attribute;
+    sai_get_ocs_cross_connect_attribute_fn         get_ocs_cross_connect_attribute;
+    sai_get_ocs_cross_connect_stats_fn             get_ocs_cross_connect_stats;
+    sai_get_ocs_cross_connect_stats_ext_fn         get_ocs_cross_connect_stats_ext;
+    sai_clear_ocs_cross_connect_stats_fn           clear_ocs_cross_connect_stats;
+} sai_ocs_cross_connect_api_t;
+
+/**
+ * @}
+ */
+#endif /** __SAIEXPERIMENTALOCSCROSSCONNECT_H_ */

@@ -50,6 +50,10 @@
 #include "saiexperimentaldashacl.h"
 #include "saiexperimentalbmtor.h"
 
+/* OCS extension */
+#include "saiexperimentalocscrossconnect.h"
+#include "saiexperimentalocsport.h"
+
 /**
  * @brief Extensions to SAI APIs
  *
@@ -88,6 +92,10 @@ typedef enum _sai_api_extensions_t
     SAI_API_DASH_FLOW,
 
     SAI_API_DASH_APPLIANCE,
+
+    SAI_API_OCS_CROSS_CONNECT,
+
+    SAI_API_OCS_PORT,
 
     /* Add new experimental APIs above this line */
 
