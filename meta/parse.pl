@@ -91,6 +91,7 @@ my %ATTR_TAGS = (
         "relaxed"        , \&ProcessTagRelaxed,
         "isresourcetype" , \&ProcessTagIsRecourceType,
         "deprecated"     , \&ProcessTagDeprecated,
+        "precision"      , \&ProcessTagPrecision,
         );
 
 my %options = ();
@@ -417,6 +418,18 @@ sub ProcessTagDeprecated
     return undef;
 }
 
+sub ProcessTagPrecision
+{
+    my ($precision, $value, $val) = @_;
+
+    # allow only integers >= 0
+    return $val if $val =~ /^\d+$/;
+
+    LogError "precision tag value '$val', expected an integer >= 0";
+
+    return undef;
+}
+
 sub ProcessTagRange
 {
     my ($type, $attrName, $value) = @_;
@@ -509,7 +522,7 @@ sub ProcessDescription
 
     return if scalar@order == 0;
 
-    my $rightOrder = 'type:flags(:objects)?(:allownull)?(:allowempty)?(:isvlan)?(:default)?(:range)?(:condition|:validonly)?(:relaxed)?(:isresourcetype)?(:deprecated)?';
+    my $rightOrder = 'type:flags(:objects)?(:allownull)?(:allowempty)?(:isvlan)?(:default)?(:range)?(:condition|:validonly)?(:relaxed)?(:isresourcetype)?(:deprecated)?(:precision)?';
 
     my $order = join(":",@order);
 
@@ -2294,6 +2307,23 @@ sub ProcessIsExtensionAttr
     return "false";
 }
 
+sub ProcessPrecision {
+    my ($stat, $precision) = @_;
+
+    # Default 0 if precision is not provided
+    return 0 unless defined $precision;
+
+    # Must be an integer >= 0
+    if ($precision =~ /^\d+$/)
+    {
+        return int($precision);
+    }
+
+    LogError "Unsupported precision value '$precision'. Expected an integer >= 0";
+
+    return undef;
+}
+
 sub ProcessSingleObjectType
 {
     my ($typedef, $objecttype) = @_;
@@ -2355,6 +2385,7 @@ sub ProcessSingleObjectType
         my $isresourcetype  = ProcessIsResourceType($attr, $meta{isresourcetype});
         my $isdeprecated    = ProcessIsDeprecatedType($attr, $meta{deprecated});
         my $isrelaxed       = ProcessRelaxedType($attr, $meta{relaxed});
+        my $precision       = ProcessPrecision($attr, $meta{precision});
 
         my $ismandatoryoncreate = ($flags =~ /MANDATORY/)       ? "true" : "false";
         my $iscreateonly        = ($flags =~ /CREATE_ONLY/)     ? "true" : "false";
@@ -2413,7 +2444,8 @@ sub ProcessSingleObjectType
         WriteSource ".isresourcetype                = $isresourcetype,";
         WriteSource ".isdeprecated                  = $isdeprecated,";
         WriteSource ".isconditionrelaxed            = $isrelaxed,";
-        WriteSource ".iscustom                      = ($attr >= 0x10000000) && ($attr < 0x20000000)";
+        WriteSource ".iscustom                      = ($attr >= 0x10000000) && ($attr < 0x20000000),";
+        WriteSource ".valueprecision                = $precision,";
 
         WriteSource "};";
 
