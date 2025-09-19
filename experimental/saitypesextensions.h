@@ -95,6 +95,12 @@ typedef enum _sai_object_type_extensions_t
 
     SAI_OBJECT_TYPE_OTN_OA,
 
+    SAI_OBJECT_TYPE_OTN_OCM,
+
+    SAI_OBJECT_TYPE_OTN_OCM_CHANNEL,
+
+    SAI_OBJECT_TYPE_OTN_OSC,
+
     /* Add new experimental object types above this line */
 
     SAI_OBJECT_TYPE_EXTENSIONS_RANGE_END
