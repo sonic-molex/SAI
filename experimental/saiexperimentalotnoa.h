@@ -401,6 +401,6 @@ typedef struct _sai_otn_oa_api_t
 } sai_otn_oa_api_t;
 
 /**
- * @}
+ * @}testgroup SAIEXPERIMENTALOTNOA
  */
 #endif /** __SAIEXPERIMENTALOTNOA_H_ */
