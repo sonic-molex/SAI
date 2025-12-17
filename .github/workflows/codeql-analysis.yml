@@ -7,10 +7,12 @@ on:
     branches:
       - 'master'
       - 'v[0-9].*'
+      - 202411_otn
   pull_request_target:
     branches:
       - 'master'
       - 'v[0-9].*'
+      - 202411_otn
   workflow_dispatch:
 
 jobs:
