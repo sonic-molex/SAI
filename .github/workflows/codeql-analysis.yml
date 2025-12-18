@@ -7,16 +7,20 @@ on:
     branches:
       - 'master'
       - 'v[0-9].*'
+      - '202411_otn'
+      - '202411_otn_pipeline'
   pull_request_target:
     branches:
       - 'master'
       - 'v[0-9].*'
+      - '202411_otn'
+      - '202411_otn_pipeline'
   workflow_dispatch:
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       actions: read
       contents: read
