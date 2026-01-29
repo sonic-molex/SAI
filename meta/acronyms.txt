@@ -6,6 +6,7 @@ AN - Auto Negotiation
 API - Application Program Interface
 ARP - Address Resolution Protocol
 ARS - Adaptiver Routing and Switching
+ASE - Amplified Spontaneous Emission
 ASIC - Application Specific Integrated Circuit
 BER - Bit Error Rate
 BFD - Bidirectional Forwarding Detection
@@ -26,6 +27,7 @@ CMIS - Common Management Interface Specification
 CPLD - Complex programmable logic device
 CPU - Central Processing Unit
 CRC - Cyclic Redundancy Code
+DGE - Dynamic Gain Equalizer
 DHCP - Dynamic Host Configuration Protocol
 DHCPV6 - Dynamic Host Configuration Protocol for IPv6
 DLD - Dead Lock Detection
@@ -187,6 +189,7 @@ VSID - Virtual Subnet Identifier
 VXLAN - Virtual Extensible LAN
 WCMP - Weighted Cost Multipath
 WRED - Weighted Random Early Detection
+WSS - Wavelength Selective Switch
 WWW - World Wide Web
 XAUI - 10 Gbps Attachment Unit Interface
 XFI - 10 Gbps Chip to Chip Interface
