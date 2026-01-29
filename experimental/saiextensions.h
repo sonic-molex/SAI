@@ -57,6 +57,7 @@
 #include "saiexperimentalotnoa.h"
 #include "saiexperimentalotnocm.h"
 #include "saiexperimentalotnosc.h"
+#include "saiexperimentalotnwss.h"
 
 /**
  * @brief Extensions to SAI APIs
@@ -111,6 +112,8 @@ typedef enum _sai_api_extensions_t
     SAI_API_OTN_OCM,
 
     SAI_API_OTN_OSC,
+
+    SAI_API_OTN_WSS,
 
     /* Add new experimental APIs above this line */
 
