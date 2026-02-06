@@ -124,6 +124,14 @@ typedef enum _sai_otn_wss_attr_t
     SAI_OTN_WSS_ATTR_INDEX = SAI_OTN_WSS_ATTR_START,
 
     /**
+     * @brief Reference to system-supplied name of the media channel
+     *
+     * @type char
+     * @flags CREATE_AND_SET
+     */
+    SAI_OTN_WSS_ATTR_NAME,
+
+    /**
      * @brief The lower frequency for the spectrum defined by this media channel.
      * The frequency unit is MHz.
      *
@@ -315,13 +323,12 @@ typedef enum _sai_otn_wss_spec_power_attr_t
     SAI_OTN_WSS_SPEC_POWER_ATTR_START,
 
     /**
-     * @brief Reference to the parent WSS object.
+     * @brief Reference to the parent WSS source port name.
      *
-     * @type sai_object_id_t
+     * @type char
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
-     * @objects SAI_OBJECT_TYPE_OTN_WSS
      */
-    SAI_OTN_WSS_SPEC_POWER_ATTR_WSS_ID = SAI_OTN_WSS_SPEC_POWER_ATTR_START,
+    SAI_OTN_WSS_SPEC_POWER_ATTR_SOURCE_PORT_NAME = SAI_OTN_WSS_SPEC_POWER_ATTR_START,
 
     /**
      * @brief Lower frequency of the specified target spectrum power.
