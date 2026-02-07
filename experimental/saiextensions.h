@@ -51,6 +51,7 @@
 #include "saiexperimentalbmtor.h"
 
 /* OTN Extensions */
+#include "saiexperimentalotndevice.h"
 #include "saiexperimentalotnattenuator.h"
 #include "saiexperimentalotnoa.h"
 #include "saiexperimentalotnocm.h"
@@ -99,6 +100,8 @@ typedef enum _sai_api_extensions_t
     /**
      * @brief OTN Extensions
      */
+    SAI_API_OTN_DEVICE,
+
     SAI_API_OTN_ATTENUATOR,
 
     SAI_API_OTN_OA,

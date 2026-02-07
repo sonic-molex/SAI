@@ -91,6 +91,8 @@ typedef enum _sai_object_type_extensions_t
     /**
      * @brief OTN Extensions
      */
+    SAI_OBJECT_TYPE_OTN_DEVICE,
+
     SAI_OBJECT_TYPE_OTN_ATTENUATOR,
 
     SAI_OBJECT_TYPE_OTN_OA,
