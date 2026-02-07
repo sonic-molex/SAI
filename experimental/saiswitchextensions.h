@@ -132,6 +132,94 @@ typedef void (*sai_ha_scope_event_notification_fn)(
         _In_ const sai_ha_scope_event_data_t *data);
 
 /**
+ * @brief OTN alarm severity
+ */
+typedef enum _sai_otn_alarm_severity_t
+{
+    /** OTN alarm severity fatal */
+    SAI_OTN_ALARM_SEVERITY_FATAL,
+
+    /** OTN alarm severity warning */
+    SAI_OTN_ALARM_SEVERITY_WARNING,
+
+    /** OTN alarm severity notice */
+    SAI_OTN_ALARM_SEVERITY_NOTICE
+
+} sai_otn_alarm_severity_t;
+
+/**
+ * @brief OTN alarm categories
+ */
+typedef enum _sai_otn_alarm_category_t
+{
+    /** Software category */
+    SAI_OTN_ALARM_CATEGORY_SW,
+
+    /** Firmware category */
+    SAI_OTN_ALARM_CATEGORY_FW,
+
+    /** Optical hardware category */
+    SAI_OTN_ALARM_CATEGORY_OPTICAL_HW,
+
+} sai_otn_alarm_category_t;
+
+/**
+ * @brief OTN alarm event data type
+ */
+typedef enum _sai_otn_alarm_data_type_t
+{
+    SAI_OTN_ALARM_DATA_TYPE_UNSPECIFIED,
+    SAI_OTN_ALARM_DATA_TYPE_RAW,
+} sai_otn_alarm_data_type_t;
+
+/**
+ * @brief OTN alarm event data
+ */
+typedef struct _sai_otn_alarm_data_t
+{
+    /** Type of OTN alarm data */
+    sai_otn_alarm_data_type_t data_type;
+
+    /** Opaque data payload */
+    sai_uint8_t data[64];
+} sai_otn_alarm_data_t;
+
+/**
+ * @brief OTN alarm event callback
+ *
+ * @objects switch_id SAI_OBJECT_TYPE_SWITCH
+ *
+ * @param[in] switch_id Switch Id
+ * @param[in] severity OTN alarm severity
+ * @param[in] timestamp Time and date of receiving the OTN alarm event
+ * @param[in] category OTN alarm category
+ * @param[in] data OTN alarm data
+ * @param[in] description JSON-encoded description string with information delivered from OTN alarm event/trap
+ * Example of a possible description:
+ * {
+ *    "otn_attenuator_id": "0x00000000000000AB",
+ *    "switch_id": "0x00000000000000AB",
+ *    "severity": "2",
+ *    "timestamp": {
+ *        "tv_sec": "22429",
+ *        "tv_nsec": "3428724"
+ *    },
+ *    "category": "3",
+ *    "data": {
+ *        data_type: "0"
+ *    },
+ *    "additional_data": "Some additional information"
+ * }
+ */
+typedef void (*sai_otn_alarm_event_notification_fn)(
+        _In_ sai_object_id_t switch_id,
+        _In_ sai_otn_alarm_severity_t severity,
+        _In_ sai_timespec_t timestamp,
+        _In_ sai_otn_alarm_category_t category,
+        _In_ sai_otn_alarm_data_t data,
+        _In_ const sai_u8_list_t description);
+
+/**
  * @brief SAI switch attribute extensions.
  *
  * @flags free
@@ -190,6 +278,17 @@ typedef enum _sai_switch_attr_extensions_t
      * @default NULL
      */
     SAI_SWITCH_ATTR_HA_SCOPE_EVENT_NOTIFY,
+
+    /**
+     * @brief Alarm event notification callback function passed to the adapter.
+     *
+     * Use sai_otn_alarm_event_notification_fn as notification function.
+     *
+     * @type sai_pointer_t sai_otn_alarm_event_notification_fn
+     * @flags CREATE_AND_SET
+     * @default NULL
+     */
+    SAI_SWITCH_ATTR_OTN_ALARM_EVENT_NOTIFY,
 
     SAI_SWITCH_ATTR_EXTENSIONS_RANGE_END
 
