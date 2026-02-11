@@ -70,8 +70,8 @@ typedef enum _sai_otn_wss_ase_status_t
  */
 typedef enum _sai_otn_wss_ase_control_mode_t
 {
-    SAI_OTN_WSS_ASE_CONTROL_MODE_ENABLED,
-    SAI_OTN_WSS_ASE_CONTROL_MODE_DISABLED,
+    SAI_OTN_WSS_ASE_CONTROL_MODE_ASE_ENABLED,
+    SAI_OTN_WSS_ASE_CONTROL_MODE_ASE_DISABLED,
     SAI_OTN_WSS_ASE_CONTROL_MODE_AUTO_ASE_ON_FAILURE,
     SAI_OTN_WSS_ASE_CONTROL_MODE_AUTO_ASE_FAILURE_AND_RESTORE,
 } sai_otn_wss_ase_control_mode_t;
@@ -90,10 +90,10 @@ typedef enum _sai_otn_wss_ase_injection_mode_t
  */
 typedef enum _sai_otn_wss_attenuation_control_mode_t
 {
-    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_FIXED_LOSS,
-    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_DYNAMIC_LOSS,
-    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_DYNAMIC_LOSS_DAMPED,
-    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_SET_ATTENUATION,
+    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_ATTENUATION_FIXED_LOSS,
+    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_ATTENUATION_DYNAMIC_LOSS,
+    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_ATTENUATION_DYNAMIC_LOSS_DAMPED,
+    SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_ATTENUATION_SET_ATTENUATION,
 } sai_otn_wss_attenuation_control_mode_t;
 
 /**
@@ -101,8 +101,8 @@ typedef enum _sai_otn_wss_attenuation_control_mode_t
  */
 typedef enum _sai_otn_wss_attenuation_control_range_t
 {
-    SAI_OTN_WSS_ATTENUATION_CONTROL_RANGE_FULL,
-    SAI_OTN_WSS_ATTENUATION_CONTROL_RANGE_LIMITED,
+    SAI_OTN_WSS_ATTENUATION_CONTROL_RANGE_CONTROL_RANGE_FULL,
+    SAI_OTN_WSS_ATTENUATION_CONTROL_RANGE_CONTROL_RANGE_LIMITED,
 } sai_otn_wss_attenuation_control_range_t;
 
 /**
@@ -232,7 +232,7 @@ typedef enum _sai_otn_wss_attr_t
      *
      * @type sai_otn_wss_attenuation_control_mode_t
      * @flags CREATE_AND_SET
-     * @default SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_SET_ATTENUATION
+     * @default SAI_OTN_WSS_ATTENUATION_CONTROL_MODE_ATTENUATION_SET_ATTENUATION
      */
     SAI_OTN_WSS_ATTR_ATTENUATION_CONTROL_MODE,
 
@@ -241,7 +241,7 @@ typedef enum _sai_otn_wss_attr_t
      *
      * @type sai_otn_wss_attenuation_control_range_t
      * @flags CREATE_AND_SET
-     * @default SAI_OTN_WSS_ATTENUATION_CONTROL_RANGE_FULL
+     * @default SAI_OTN_WSS_ATTENUATION_CONTROL_RANGE_CONTROL_RANGE_FULL
      */
     SAI_OTN_WSS_ATTR_ATTENUATION_CONTROL_RANGE,
 
