@@ -144,7 +144,7 @@ typedef enum _sai_otn_ocm_channel_attr_t
     /**
      * @brief References the media channel name of the optical channel monitor.
      *
-     * @type char
+     * @type sai_u8_list_t
      * @flags MANDATORY_ON_CREATE | CREATE_ONLY
      */
     SAI_OTN_OCM_CHANNEL_ATTR_NAME = SAI_OTN_OCM_CHANNEL_ATTR_START,
