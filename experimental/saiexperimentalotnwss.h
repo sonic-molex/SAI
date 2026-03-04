@@ -508,11 +508,19 @@ typedef struct _sai_otn_wss_api_t
     sai_remove_otn_wss_fn                       remove_otn_wss;
     sai_set_otn_wss_attribute_fn                set_otn_wss_attribute;
     sai_get_otn_wss_attribute_fn                get_otn_wss_attribute;
+    sai_bulk_object_create_fn                   create_otn_wsss;
+    sai_bulk_object_remove_fn                   remove_otn_wsss;
+    sai_bulk_object_set_attribute_fn            set_otn_wsss_attribute;
+    sai_bulk_object_get_attribute_fn            get_otn_wsss_attribute;
 
     sai_create_otn_wss_spec_power_fn            create_otn_wss_spec_power;
     sai_remove_otn_wss_spec_power_fn            remove_otn_wss_spec_power;
     sai_set_otn_wss_spec_power_attribute_fn     set_otn_wss_spec_power_attribute;
     sai_get_otn_wss_spec_power_attribute_fn     get_otn_wss_spec_power_attribute;
+    sai_bulk_object_create_fn                   create_otn_wss_spec_powers;
+    sai_bulk_object_remove_fn                   remove_otn_wss_spec_powers;
+    sai_bulk_object_set_attribute_fn            set_otn_wss_spec_powers_attribute;
+    sai_bulk_object_get_attribute_fn            get_otn_wss_spec_powers_attribute;
 } sai_otn_wss_api_t;
 
 /**
