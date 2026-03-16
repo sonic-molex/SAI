@@ -19,3 +19,4 @@ e.g.
 ```
 GEN_SAIRPC_OPTS="-ve" make
 ```
+#trigger sai build
