@@ -128,6 +128,7 @@ typedef enum _sai_otn_wss_attr_t
      *
      * @type char
      * @flags CREATE_AND_SET
+     * @default ""
      */
     SAI_OTN_WSS_ATTR_NAME,
 
