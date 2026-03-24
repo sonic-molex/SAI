@@ -88,6 +88,25 @@ typedef enum _sai_object_type_extensions_t
 
     SAI_OBJECT_TYPE_DASH_APPLIANCE,
 
+    /**
+     * @brief OTN Extensions
+     */
+    SAI_OBJECT_TYPE_OTN_DEVICE,
+
+    SAI_OBJECT_TYPE_OTN_ATTENUATOR,
+
+    SAI_OBJECT_TYPE_OTN_OA,
+
+    SAI_OBJECT_TYPE_OTN_OCM,
+
+    SAI_OBJECT_TYPE_OTN_OCM_CHANNEL,
+
+    SAI_OBJECT_TYPE_OTN_OSC,
+
+    SAI_OBJECT_TYPE_OTN_WSS,
+
+    SAI_OBJECT_TYPE_OTN_WSS_SPEC_POWER,
+
     /* Add new experimental object types above this line */
 
     SAI_OBJECT_TYPE_EXTENSIONS_RANGE_END

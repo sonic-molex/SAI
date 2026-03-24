@@ -132,6 +132,76 @@ typedef void (*sai_ha_scope_event_notification_fn)(
         _In_ const sai_ha_scope_event_data_t *data);
 
 /**
+ * @brief OTN alarm severity
+ */
+typedef enum _sai_otn_alarm_severity_t
+{
+    /** OTN alarm severity critical */
+    SAI_OTN_ALARM_SEVERITY_CRITICAL,
+
+    /** OTN alarm severity major */
+    SAI_OTN_ALARM_SEVERITY_MAJOR,
+
+    /** OTN alarm severity minor */
+    SAI_OTN_ALARM_SEVERITY_MINOR,
+
+    /** OTN alarm severity info */
+    SAI_OTN_ALARM_SEVERITY_INFO,
+} sai_otn_alarm_severity_t;
+
+/**
+ * @brief OTN alarm action
+ */
+typedef enum _sai_otn_alarm_action_t
+{
+    /** Raise alarm */
+    SAI_OTN_ALARM_ACTION_RAISE,
+
+    /** Clear alarm */
+    SAI_OTN_ALARM_ACTION_CLEAR,
+} sai_otn_alarm_action_t;
+
+/**
+ * @brief OTN alarm event data
+ */
+typedef struct _sai_otn_alarm_event_data_t
+{
+    /** OTN object id */
+    sai_object_id_t object_id;
+
+    /** OTN event name, string */
+    sai_u8_list_t event_name;
+
+    /** OTN event timestamp */
+    sai_timespec_t timestamp;
+
+    /** OTN event severity */
+    sai_otn_alarm_severity_t severity;
+
+    /** OTN event action */
+    sai_otn_alarm_action_t action;
+
+    /** OTN event description, string */
+    sai_u8_list_t description;
+
+    /** OTN event binary data payload */
+    sai_u8_list_t data;
+
+} sai_otn_alarm_event_data_t;
+
+/**
+ * @brief OTN alarm event notification
+ *
+ * @count data[count]
+ *
+ * @param[in] count Number of notifications
+ * @param[in] data Array of OTN alarm events
+ */
+typedef void (*sai_otn_alarm_event_notification_fn)(
+        _In_ uint32_t count,
+        _In_ const sai_otn_alarm_event_data_t *data);
+
+/**
  * @brief SAI switch attribute extensions.
  *
  * @flags free
@@ -190,6 +260,17 @@ typedef enum _sai_switch_attr_extensions_t
      * @default NULL
      */
     SAI_SWITCH_ATTR_HA_SCOPE_EVENT_NOTIFY,
+
+    /**
+     * @brief OTN alarm event notification callback function passed to the adapter.
+     *
+     * Use sai_otn_alarm_event_notification_fn as notification function.
+     *
+     * @type sai_pointer_t sai_otn_alarm_event_notification_fn
+     * @flags CREATE_AND_SET
+     * @default NULL
+     */
+    SAI_SWITCH_ATTR_OTN_ALARM_EVENT_NOTIFY,
 
     SAI_SWITCH_ATTR_EXTENSIONS_RANGE_END
 
