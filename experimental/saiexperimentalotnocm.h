@@ -65,6 +65,18 @@ typedef enum _sai_otn_ocm_attr_t
     SAI_OTN_OCM_ATTR_MONITOR_PORT,
 
     /**
+     * @brief Raw OCM spectrum data as a flat byte array.
+     *
+     * Full optical spectrum power measurement as an array of int8 values.
+     * Each element represents power of one frequency slot in units of 0.01 dBm.
+     * Array length equals the number of frequency slots (OCM_SLICE_MAX_NUM = 512).
+     *
+     * @type sai_s8_list_t
+     * @flags READ_ONLY
+     */
+    SAI_OTN_OCM_ATTR_RAW_DATA,
+
+    /**
      * @brief End of attributes
      */
     SAI_OTN_OCM_ATTR_END,
