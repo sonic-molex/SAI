@@ -27,6 +27,7 @@
 
 #include <saiswitch.h>
 #include <saitypesextensions.h>
+#include <saiexperimentaldashflow.h>
 
 /**
  * @brief DASH capability HA scope level
@@ -130,6 +131,58 @@ typedef struct _sai_ha_scope_event_data_t
 typedef void (*sai_ha_scope_event_notification_fn)(
         _In_ uint32_t count,
         _In_ const sai_ha_scope_event_data_t *data);
+
+/**
+ * @brief Flow bulk get session event type
+ */
+typedef enum _sai_flow_bulk_get_session_event_t
+{
+    /** Indicates the session has finished */
+    SAI_FLOW_BULK_GET_SESSION_EVENT_FINISHED,
+
+    /** Indicates a flow entry result */
+    SAI_FLOW_BULK_GET_SESSION_EVENT_FLOW_ENTRY,
+
+} sai_flow_bulk_get_session_event_t;
+
+/**
+ * @brief Notification data format for flow bulk get session event
+ *
+ * @count attr[attr_count]
+ */
+typedef struct _sai_flow_bulk_get_session_event_data_t
+{
+    /** Flow entry */
+    sai_flow_entry_t flow_entry;
+
+    /** Number of attributes */
+    uint32_t attr_count;
+
+    /** Event type */
+    sai_flow_bulk_get_session_event_t event_type;
+
+    /**
+     * @brief Attributes
+     *
+     * @objects SAI_OBJECT_TYPE_FLOW_ENTRY
+     */
+    sai_attribute_t *attr;
+
+} sai_flow_bulk_get_session_event_data_t;
+
+/**
+ * @brief Flow bulk get session event notification
+ *
+ * @count data[count]
+ *
+ * @param[in] flow_bulk_session_id Flow bulk session ID
+ * @param[in] count Number of events
+ * @param[in] data Array of flow bulk get session event data
+ */
+typedef void (*sai_flow_bulk_get_session_event_notification_fn)(
+        _In_ sai_object_id_t flow_bulk_session_id,
+        _In_ uint32_t count,
+        _In_ const sai_flow_bulk_get_session_event_data_t *data);
 
 /**
  * @brief OTN alarm severity
@@ -260,6 +313,17 @@ typedef enum _sai_switch_attr_extensions_t
      * @default NULL
      */
     SAI_SWITCH_ATTR_HA_SCOPE_EVENT_NOTIFY,
+
+    /**
+     * @brief Flow bulk get session event notification
+     *
+     * Use sai_flow_bulk_get_session_event_notification_fn as notification function.
+     *
+     * @type sai_pointer_t sai_flow_bulk_get_session_event_notification_fn
+     * @flags CREATE_AND_SET
+     * @default NULL
+     */
+    SAI_SWITCH_ATTR_FLOW_BULK_GET_SESSION_EVENT_NOTIFY,
 
     /**
      * @brief OTN alarm event notification callback function passed to the adapter.

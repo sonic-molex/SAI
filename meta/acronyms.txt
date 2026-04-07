@@ -1,4 +1,5 @@
 # this file defines acronyms, one acronym per line
+ACK - Acknowledgement
 ACL - Access Control List
 AES - Advanced Encryption Standard
 AN - Association Number
@@ -14,6 +15,7 @@ BFDV6 - Bidirectional Forwarding Detection for IPv6
 BGP - Border Gateway Protocol
 BMTOR - Behavioral Model Top-of-Rack
 BOS - Bottom Of Stack
+BTH - Base Transport Header
 BW - Bandwidth
 CAM - Content Addressable Memory
 CAUI - 100 Gigabit Attachment Unit Interface
@@ -27,6 +29,8 @@ CMIS - Common Management Interface Specification
 CPLD - Complex programmable logic device
 CPU - Central Processing Unit
 CRC - Cyclic Redundancy Code
+CSIG - Crypto Signal
+DFE - Decision Feedback Equalizer
 DGE - Dynamic Gain Equalizer
 DHCP - Dynamic Host Configuration Protocol
 DHCPV6 - Dynamic Host Configuration Protocol for IPv6
@@ -55,6 +59,7 @@ FCS - Frame Check Sequence
 FD - File Descriptor
 FDB - Forwarding Data Base
 FEC - Forward Error Correction
+FFE - Feed Forward Equalizer
 FPGA - Field Programmable Gate Array
 FW  - Firmware
 GCM - Galois Counter Mode
@@ -89,6 +94,7 @@ L2MC - Layer 2 Multi Cast
 L3 - Layer 3
 LAG - Link Aggregation Group
 LDP - Label Distribution Protocol
+LLR - Log Likelihood Ratio
 LPM - Longest Prefix Match
 LSP - Label Switched Path
 MAC - Medium Access Control
@@ -98,6 +104,7 @@ MILLI - milli (1/1000)
 MMU - Memory Management Unit
 MPLS - Multi Protocol Label Switching
 MTU - Maximum Transmission Unit
+NACK - Negative Acknowledgement
 NAPT - Network Address Port Translation
 NHLFE - Next Hop Label Forwarding Entry
 NMOS - N-channel Metal Oxide Semiconductor
@@ -133,6 +140,7 @@ PSP - Penultimate Segment Pop
 PTP - Precision time protocol
 QOS - Quality of Service
 RARP - Reverse Address Resolution Protocol
+RDMA - Remote Direct Memory Access
 RFC - Request For Comment
 RPC - Remote Procedure Call
 RPF - Reverse Path Forwarding
@@ -161,7 +169,9 @@ SRV6 - Segment Routing with IPv6
 SSCI - Short Secure Channel Identifier
 SSH - Secure Shell
 SSL - Secure Socket Layer
+SSPRQ - Spread Spectrum Pseudo Random Quaternary
 STP - Spanning Tree Protocol
+SYNCE - Synchronous Ethernet
 TC - Traffic Control
 TCAM - Ternary Content Addressable Memory
 TCP - Transmission Control Protocol
